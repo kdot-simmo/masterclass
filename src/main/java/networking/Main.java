@@ -21,6 +21,11 @@ public class Main {
             int responseCode = urlConnection.getResponseCode();
             System.out.println("Response code: " + responseCode);
 
+            if (responseCode != 200) {
+                System.out.println("Error reading webpage.");
+                System.out.println(urlConnection.getResponseMessage());
+            }
+
             BufferedReader inputReader = new BufferedReader(new InputStreamReader(urlConnection.getInputStream()));
             String line;
             while ((line = inputReader.readLine()) != null) {
